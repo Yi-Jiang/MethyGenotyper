@@ -8,7 +8,7 @@
 #' @param type One of snp_probe, typeI_probe, and typeII_probe.
 #' @param maxiter Maximal number of iterations for the EM algorithm.
 #' @param bayesian Use the Bayesian approach to calculate posterior genotype probabilities.
-#' @param platform EPIC or 450K.
+#' @param platform EPIC, 450K, or EPIC_v2.
 #' @param verbose Verbose mode: 0/1/2.
 #' @return  A list containing
 #' \item{RAI}{Ratio of Alternative allele Intensity}
@@ -170,7 +170,7 @@ eBeta = function(x,w){
 #' @param platform EPIC or 450K.
 #' @param pop Population to be used to extract AFs. One of EAS, AMR, AFR, EUR, SAS, and ALL.
 #' @param type One of snp_probe, typeI_probe, and typeII_probe.
-#' @param platform EPIC or 450K.
+#' @param platform EPIC, 450K, or EPIC_v2.
 #' @return A vector of AFs
 #' @export
 get_AF <- function(pop="EAS", type, platform="EPIC"){
@@ -180,24 +180,32 @@ get_AF <- function(pop="EAS", type, platform="EPIC"){
   if(type=="snp_probe"){
     if(platform=="EPIC"){
       data(probeInfo_snp)
-    }else{
+    }else if(platform=="450K"){
       data(probeInfo_snp_450K); probeInfo_snp <- probeInfo_snp_450K
+    }else if(platform=="EPIC_v2"){
+      data(probeInfo_snp_936K); probeInfo_snp <- probeInfo_snp_936K
+    }else{
+      print("ERROR: Please specify platform to one of EPIC, 450K, and EPIC_v2.")
     }
     probe2af <- probeInfo_snp[, paste0(pop, "_AF")]
     names(probe2af) <- probeInfo_snp$CpG
   }else if(type=="typeI_probe"){
     if(platform=="EPIC"){
       data(probeInfo_typeI)
-    }else{
+    }else if(platform=="450K"){
       data(probeInfo_typeI_450K); probeInfo_typeI <- probeInfo_typeI_450K
+    }else{
+      print("ERROR: Please specify platform to one of EPIC and 450K.")
     }
     probe2af <- probeInfo_typeI[, paste0(pop, "_AF")]
     names(probe2af) <- probeInfo_typeI$CpG
   }else if(type=="typeII_probe"){
     if(platform=="EPIC"){
       data(probeInfo_typeII)
-    }else{
+    }else if(platform=="450K"){
       data(probeInfo_typeII_450K); probeInfo_typeII <- probeInfo_typeII_450K
+    }else{
+      print("ERROR: Please specify platform to one of EPIC and 450K.")
     }
     probe2af <- probeInfo_typeII[, paste0(pop, "_AF")]
     names(probe2af) <- probeInfo_typeII$CpG

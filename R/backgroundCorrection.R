@@ -2,7 +2,7 @@
 #' Noob and dye-bias correction
 #' 
 #' @param target A data frame of two columns: Sample_Name, Basename, where Basename tells the location of IDAT files.
-#' @param platform EPIC or 450K.
+#' @param platform EPIC, 450K, or EPIC_v2.
 #' @param cpu Number of CPU.
 #' @return A list of noob and dye-bias corrected signals containing:
 #' \item{AR}{ - A matrix of probeA signals in Red channel}
@@ -17,9 +17,14 @@ correct_noob_dye <- function(target, platform="EPIC", cpu=1){
     if(platform=="EPIC"){
       data(mnfst) # Required columns: Name, AddressA_ID (numeric), AddressB_ID (numeric), Infinium_Design_Type, and Color_Channel
       data(probelist)
-    }else{
+    }else if(platform=="450K"){
       data(mnfst_450K); mnfst <- mnfst_450K
       data(probelist_450K); probelist <- probelist_450K
+    }else if(platform=="EPIC_v2"){
+      data(mnfst_936K); mnfst <- mnfst_936K
+      data(probelist_936K); probelist <- probelist_936K
+    }else{
+      print("ERROR: Please specify platform to one of EPIC, 450K, and EPIC_v2.")
     }
     rgSet = suppressWarnings(minfi::read.metharray.exp(targets=target[1,]))
     if(length(intersect(rgSet@NAMES, mnfst$AddressA_ID)) < 10){

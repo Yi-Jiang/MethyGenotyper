@@ -170,7 +170,7 @@ dosage2hard <- function(AA, AB, BB){
 #' @param pop Population to be used to extract AFs. One of EAS, AMR, AFR, EUR, SAS, and ALL.
 #' @param type One of snp_probe, typeI_probe, and typeII_probe.
 #' @param plotAF To plot the distribution of AFs in 1KGP and input data.
-#' @param platform EPIC or 450K.
+#' @param platform EPIC, 450K, or EPIC_v2.
 #' @return A matrix of genotype calls. Variants with R2s, HWE p values, MAFs, or missing rates beyond the cutoffs are removed.
 #' @export
 format_genotypes <- function(genotypes, vcf=FALSE, vcfName, GP_cutoff=0.9, outlier_cutoff="max", missing_cutoff=0.1, 
@@ -233,20 +233,28 @@ format_genotypes <- function(genotypes, vcf=FALSE, vcfName, GP_cutoff=0.9, outli
     if(type=="snp_probe"){
       if(platform=="EPIC"){
         data(probeInfo_snp); probeInfo <- probeInfo_snp
-      }else{
+      }else if(platform=="450K"){
         data(probeInfo_snp_450K); probeInfo <- probeInfo_snp_450K
+      }else if(platform=="EPIC_v2"){
+        data(probeInfo_snp_936K); probeInfo <- probeInfo_snp_936K
+      }else{
+        print("ERROR: Please specify platform to one of EPIC, 450K, and EPIC_v2.")
       }
     }else if(type=="typeI_probe"){
       if(platform=="EPIC"){
         data(probeInfo_typeI); probeInfo <- probeInfo_typeI
-      }else{
+      }else if(platform=="450K"){
         data(probeInfo_typeI_450K); probeInfo <- probeInfo_typeI_450K
+      }else{
+        print("ERROR: Please specify platform to one of EPIC and 450K.")
       }
     }else if(type=="typeII_probe"){
       if(platform=="EPIC"){
         data(probeInfo_typeII); probeInfo <- probeInfo_typeII
-      }else{
+      }else if(platform=="450K"){
         data(probeInfo_typeII_450K); probeInfo <- probeInfo_typeII_450K
+      }else{
+        print("ERROR: Please specify platform to one of EPIC and 450K.")
       }
     }else{
       print("Error: misspecified probe type!")

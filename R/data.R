@@ -31,6 +31,22 @@
 #' @source \url{https://webdata.illumina.com/downloads/productfiles/humanmethylation450/humanmethylation450_15017482_v1-2.csv}
 "mnfst_450K"
 
+#' EPIC_v2 manifest file
+#' 
+#' A dataset containing all EPIC_v2 probes information.
+#' 
+#' @usage data(mnfst_936K)
+#' @format A data frame with 937691 rows and 5 columns:
+#' \describe{
+#'  \item{Name}{CpG name}
+#'  \item{AddressA_ID}{AdressA ID}
+#'  \item{AddressB_ID}{AdressB ID}
+#'  \item{Infinium_Design_Type}{Infinium design type}
+#'  \item{Color_Channel}{Color channel}
+#' }
+#' @source \url{https://webdata.illumina.com}
+"mnfst_936K"
+
 #' SNP probe information for EPIC
 #' 
 #' A dataset containing SNP probe information. Only autosome probes are included.
@@ -80,6 +96,31 @@
 #' }
 #' @source \url{https://webdata.illumina.com/downloads/productfiles/methylationEPIC/infinium-methylationepic-v-1-0-b5-manifest-file-csv.zip}
 "probeInfo_snp_450K"
+
+#' SNP probe information for EPIC_v2
+#' 
+#' A dataset containing SNP probe information.
+#' 
+#' @usage data(probeInfo_snp_936K)
+#' @format A data frame with 65 rows and 14 columns:
+#' \describe{
+#'  \item{Chr}{Chromosome ID}
+#'  \item{Pos}{Position}
+#'  \item{SNP}{SNP ID targeted by the CpG}
+#'  \item{RefAllele}{Reference allele}
+#'  \item{AltAllele}{Alternative allele}
+#'  \item{CpG}{CpG}
+#'  \item{Color}{Color channel}
+#'  \item{Group}{Probe types, color channel, and signal corresponds to alternative allele}
+#'  \item{ALL_AF}{Allele frequency of all population}
+#'  \item{EAS_AF}{Allele frequency of East Asian}
+#'  \item{AMR_AF}{Allele frequency of American}
+#'  \item{AFR_AF}{Allele frequency of African}
+#'  \item{EUR_AF}{Allele frequency of European}
+#'  \item{SAS_AF}{Allele frequency of South Asian}
+#' }
+#' @source \url{https://webdata.illumina.com}
+"probeInfo_snp_936K"
 
 #' Type I probe information for EPIC
 #' 
@@ -207,6 +248,19 @@
 #'  \item{Type}{Probe types}
 #' }
 "probelist_450K"
+
+#' Probe list for EPIC_v2
+#' 
+#' A dataset containing the list of 65 SNP probes.
+#' 
+#' @usage data(probelist_936K)
+#' @format A data frame with 65 rows and 2 columns:
+#' \describe{
+#'  \item{CpG}{CpG list}
+#'  \item{Type}{Probe types}
+#'  \item{A2}{Alternative alleles}
+#' }
+"probelist_936K"
 
 #' Reference genotypes in the 1000 Genomes Project
 #' 
