@@ -27,6 +27,9 @@ correct_noob_dye <- function(target, platform="EPIC", cpu=1){
       print("ERROR: Please specify platform to one of EPIC, 450K, and EPIC_v2.")
     }
     rgSet = suppressWarnings(minfi::read.metharray.exp(targets=target[1,]))
+    if(platform=="EPIC_v2"){
+      minfi::annotation(rgSet) <- c(array = "IlluminaHumanMethylationEPICv2", annotation = "ilm12.hg38")
+    }
     if(length(intersect(rgSet@NAMES, mnfst$AddressA_ID)) < 10){
       print("ERROR: Address IDs not found in manifest file. Please check that you have specified the correct platform."); return(NA)
     }
@@ -35,8 +38,11 @@ correct_noob_dye <- function(target, platform="EPIC", cpu=1){
     cl <- makeCluster(cpu)
     registerDoParallel(cl)
     rgData_list <- foreach (sp=c(1:nrow(target)), .packages="tidyverse", 
-                            .export=c("probelist", "mnfst", "backgroundCorrectionNoobFit", "normExpSignal")) %dopar% {
+                            .export=c("probelist", "mnfst", "backgroundCorrectionNoobFit", "normExpSignal", "platform")) %dopar% {
         rgSet = minfi::read.metharray.exp(targets=target[sp,])
+        if(platform=="EPIC_v2"){
+          minfi::annotation(rgSet) <- c(array = "IlluminaHumanMethylationEPICv2", annotation = "ilm12.hg38")
+        }
         green <- minfi::getGreen(rgSet)[,1] # vector: IBG IAG IIG
         red <- minfi::getRed(rgSet)[,1]   # vector: IBR IAR IIR
         green[green == 0] <- 1
