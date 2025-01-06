@@ -102,7 +102,7 @@
 #' A dataset containing SNP probe information.
 #' 
 #' @usage data(probeInfo_snp_936K)
-#' @format A data frame with 65 rows and 14 columns:
+#' @format A data frame with 62 rows and 14 columns:
 #' \describe{
 #'  \item{Chr}{Chromosome ID}
 #'  \item{Pos}{Position}
@@ -229,7 +229,7 @@
 #' A dataset containing the list of 53 SNP probes on autosomes, 715 Type I probes, and 26420 type II probes.
 #' 
 #' @usage data(probelist)
-#' @format A data frame with 27188 rows and 2 columns:
+#' @format A data frame with 27188 rows and 3 columns:
 #' \describe{
 #'  \item{CpG}{CpG list}
 #'  \item{Type}{Probe types}
@@ -242,7 +242,7 @@
 #' A dataset containing the list of 53 SNP probes on autosomes, 712 Type I probes, and 11875 type II probes.
 #' 
 #' @usage data(probelist_450K)
-#' @format A data frame with 12644 rows and 2 columns:
+#' @format A data frame with 12644 rows and 3 columns:
 #' \describe{
 #'  \item{CpG}{CpG list}
 #'  \item{Type}{Probe types}
@@ -254,7 +254,7 @@
 #' A dataset containing the list of 65 SNP probes.
 #' 
 #' @usage data(probelist_936K)
-#' @format A data frame with 65 rows and 2 columns:
+#' @format A data frame with 62 rows and 3 columns:
 #' \describe{
 #'  \item{CpG}{CpG list}
 #'  \item{Type}{Probe types}

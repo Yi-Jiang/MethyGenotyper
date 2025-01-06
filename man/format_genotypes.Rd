@@ -46,7 +46,7 @@ format_genotypes(
 
 \item{plotAF}{To plot the distribution of AFs in 1KGP and input data.}
 
-\item{platform}{EPIC or 450K.}
+\item{platform}{EPIC, 450K, or EPIC_v2.}
 }
 \value{
 A matrix of genotype calls. Variants with R2s, HWE p values, MAFs, or missing rates beyond the cutoffs are removed.

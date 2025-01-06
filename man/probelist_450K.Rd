@@ -5,7 +5,7 @@
 \alias{probelist_450K}
 \title{Probe list for 450K}
 \format{
-A data frame with 12644 rows and 2 columns:
+A data frame with 12644 rows and 3 columns:
 \describe{
 \item{CpG}{CpG list}
 \item{Type}{Probe types}
