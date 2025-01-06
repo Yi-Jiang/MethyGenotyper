@@ -268,14 +268,14 @@ format_genotypes <- function(genotypes, vcf=FALSE, vcfName, GP_cutoff=0.9, outli
              FORMAT="GT:DS:RAI:GP")
     ) %>% left_join(geno, by=c("CpG"))
     vcf <- vcf[, -6]
-    vcf$Chr <- factor(vcf$Chr, levels=c(paste0("chr", 1:22)))
+    vcf$Chr <- factor(vcf$Chr, levels=c(paste0("chr", c(1:22, "X"))))
     vcf <- vcf[order(vcf$Chr, vcf$Pos),]
     
     ## Header
     samplelist <- paste(colnames(dosage), collapse="\t")
     header <- paste(
       "##fileformat=VCFv4.2",
-      paste(paste0("##contig=<ID=chr", 1:22, ">"), collapse="\n"),
+      paste(paste0("##contig=<ID=chr", c(1:22, "X"), ">"), collapse="\n"),
       paste0("##INFO=<ID=AF,Number=1,Type=Float,Description=\"Allele frequency\">"),
       paste0("##INFO=<ID=R2,Number=1,Type=Float,Description=\"R-square, encoded as var(G)/2p(1-p), where G is dosage genotype and p is allele frequency. Variants with 1<R2<=1.1 are constrained to 1. Variants with R2>1.1 (marked as .) are recommended to remove\">"),
       paste0("##INFO=<ID=HWE,Number=1,Type=Float,Description=\"Hardy-Weinberg Equilibrium p-value\">"),
