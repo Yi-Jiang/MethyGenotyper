@@ -58,7 +58,7 @@ We will now introduce the workflow in detail, providing R code to illustrate the
 
 ## Load the MethylGenotyper package
 
-This package has the following dependencies: `minfi`, `tidyverse`, `foreach`, `doParallel`, `HardyWeinberg`, `multimode`, `rlist`, `stats4`, `ggplot2`, `ggpubr`.
+This package has the following dependencies: `minfi`, `tidyverse`, `foreach`, `doParallel`, `HardyWeinberg`, `multimode`, `rlist`, `stats4`, `ggplot2`, `ggpubr`, `mblm`.
 
 ```{r MethylGenotyper, eval=FALSE, message=FALSE, warning=FALSE}
 library(MethylGenotyper)

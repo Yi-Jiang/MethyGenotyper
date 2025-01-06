@@ -3,7 +3,7 @@ Type: Package
 Title: MethylGenotyper: Accurate estimation of SNP genotypes from DNA methylation data
 Version: 1.0
 RoxygenNote: 7.3.1
-Imports: minfi, tidyverse, foreach, doParallel, HardyWeinberg, multimode, rlist, stats4, ggplot2, ggpubr, ggsci
+Imports: minfi, tidyverse, foreach, doParallel, HardyWeinberg, multimode, rlist, stats4, ggplot2, ggpubr, ggsci, mblm
 LazyData: false
 VignetteBuilder: knitr
 Suggests: knitr, rmarkdown
